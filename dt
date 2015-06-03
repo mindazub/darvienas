@@ -1,0 +1,5 @@
+ id |   name    |            email             |                           password                           | remember_token |     created_at      |     updated_at      
+----+-----------+------------------------------+--------------------------------------------------------------+----------------+---------------------+---------------------
+  1 | mindaugas | mindaugas.azubalis@gmail.com | $2y$10$C15WUtLuqsWFAFkWYjuKU.xZpIaMgp7UH2mpKg1S7LLIAzPNmRArm |                | 2015-06-03 09:41:15 | 2015-06-03 09:41:15
+(1 row)
+
