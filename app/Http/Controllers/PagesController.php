@@ -8,18 +8,19 @@ use Illuminate\Http\Request;
 class PagesController extends Controller {
 
 	
-	public function about() {
+	public function about() {		
 
-		// $name = 'Mindaugas Azubalis';
-		
-		$data = [];
+		$people = ['Mark', 'Jonh', 'Me', 'Marty'];
 
-		$data['first']='Mindaugas';
-		$data['last']= 'Azubalis';
-
-		return view('pages.about', $data);
+		// return view('pages.about', compact($people));
+		return view('pages.about')->with('people', $people);
 	}
 	
 	
+		public function contact() {
+			return view('pages.contact');
+		}
+		
+			
 
 }
