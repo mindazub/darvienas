@@ -13,7 +13,7 @@
 			</h2></strong>
 
 				<p>Created:{{ $article->created_at }}</p>
-				<!-- <p>Published:{{ $article->published_at }}</p> -->
+				<p>Published:{{ $article->published_at }}</p>
 				<p>{{ $article->body }}</p>
 
 

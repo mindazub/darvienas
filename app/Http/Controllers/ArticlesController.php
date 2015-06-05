@@ -1,11 +1,13 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateArticleRequest;
+use App\Http\Requests\ArticleRequest;
+use Illuminate\Http\Request;
 use App\Article;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Request;
+// use Request;
 use Carbon\Carbon;
 
 class ArticlesController extends Controller {
@@ -16,42 +18,26 @@ class ArticlesController extends Controller {
 		$articles = Article::latest('published_at')->published()->paginate(5);
 		// $articles = Article::latest('published_at')->unpublished()->paginate(5);
 		// order_by('published_at', 'desc')
-
 		return view('articles.index', compact('articles'));
-		
-
 	}
 
-
-	/*
-	*
-	*
-	*/
-
 	
-	public function create() {
-		
+	public function create() {		
 		return view('articles.create');
 	}
 
 	public function show($id) {
-		
-
 		$article = Article::findOrFail($id);
-		
 		// dd($article->published_at);
-
 		// if(is_null($article)) {
 		// 	abort(404);
 		// }
-		
 		return view('articles.show', compact('article'));
-
 	}
 
+	public function store(ArticleRequest $request) {
+	// public function store(Request $request) {
 
-	public function store(CreateArticleRequest $request) {
-	
 		// $input = Request::all();
 
 		// $input['published_at'] = Carbon::now();
@@ -70,15 +56,32 @@ class ArticlesController extends Controller {
 
 		// Article::create($input);
 		// Article::create(Request::all());
+
+		// $this->validate($request. ['title'=>'required', 'body'=>'required']);
 		Article::create($request->all());
-
-
-
 		return redirect('articles');
 
 	}
 
 
+	public function edit($id) {
+
+		$article = Article::findOrFail($id);
+
+		return view('articles.edit', compact('article'));
+	}
+	
+	
+	public function update($id, ArticleRequest $request) {
+
+		$article = Article::findOrFail($id);
+
+		$article->update($request->all());
+
+		return redirect('articles');
+	}
+	
+	
 	
 	
 	
