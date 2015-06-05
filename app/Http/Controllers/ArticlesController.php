@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateArticleRequest;
 use App\Article;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -12,13 +13,21 @@ class ArticlesController extends Controller {
 	
 	public function index() {
 		
-		$articles = Article::latest()->get();
+		$articles = Article::latest('published_at')->published()->paginate(5);
+		// $articles = Article::latest('published_at')->unpublished()->paginate(5);
 		// order_by('published_at', 'desc')
 
 		return view('articles.index', compact('articles'));
 		
 
 	}
+
+
+	/*
+	*
+	*
+	*/
+
 	
 	public function create() {
 		
@@ -29,7 +38,8 @@ class ArticlesController extends Controller {
 		
 
 		$article = Article::findOrFail($id);
-		// dd($article);
+		
+		// dd($article->published_at);
 
 		// if(is_null($article)) {
 		// 	abort(404);
@@ -40,10 +50,11 @@ class ArticlesController extends Controller {
 	}
 
 
-	public function store() {
+	public function store(CreateArticleRequest $request) {
 	
-		$input = Request::all();
-		$input['published_at'] = Carbon::now();
+		// $input = Request::all();
+
+		// $input['published_at'] = Carbon::now();
 
 		// $input = Request::get('body');
 		// var_dump($input);
@@ -53,11 +64,13 @@ class ArticlesController extends Controller {
 		// $article->save();
 
 		// var_dump(Request::all());
-		var_dump($input);
-
+		// var_dump($input);
 
 		// Article::create(Request::all());
-		Article::create($input);
+
+		// Article::create($input);
+		// Article::create(Request::all());
+		Article::create($request->all());
 
 
 
