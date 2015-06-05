@@ -46,16 +46,20 @@ class ArticlesController extends Controller {
 		$input['published_at'] = Carbon::now();
 
 		// $input = Request::get('body');
-
 		// var_dump($input);
-
 		// $article = new Article;
-
 		// $article->title = $input['title'];
 		// $article->body = $input['body'];
 		// $article->save();
 
+		// var_dump(Request::all());
+		var_dump($input);
+
+
+		// Article::create(Request::all());
 		Article::create($input);
+
+
 
 		return redirect('articles');
 
