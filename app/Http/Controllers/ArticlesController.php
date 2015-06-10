@@ -3,7 +3,7 @@
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 use App\Article;
-
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -12,8 +12,17 @@ use Carbon\Carbon;
 
 class ArticlesController extends Controller {
 
+
+
+	public function __construct(){
+		$this->middleware('auth', ['only'=>'create']);
+	}
+	
+	
 	
 	public function index() {
+
+		// return \Auth::user();
 		
 		$articles = Article::latest('published_at')->published()->paginate(5);
 		// $articles = Article::latest('published_at')->unpublished()->paginate(5);
@@ -58,7 +67,14 @@ class ArticlesController extends Controller {
 		// Article::create(Request::all());
 
 		// $this->validate($request. ['title'=>'required', 'body'=>'required']);
-		Article::create($request->all());
+		
+
+		// Auth::user()->save(new Article($request->all()));
+
+		$article = new Article($request->all());
+		
+		Auth::user()->articles()->save($article);
+
 		return redirect('articles');
 
 	}

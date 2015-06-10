@@ -11,10 +11,14 @@
 			<strong><h2> 
 			<a href="/articles/{{ $article->id }}">{{ $article->title}}</a>
 			</h2></strong>
+			<h4>Created by {{ $article->user->name }}<small>&nbsp&nbsppublished on&nbsp&nbsp{{ $article->published_at }}</small></h4> 
 
 				<p>Created:{{ $article->created_at }}</p>
 				<p>Published:{{ $article->published_at }}</p>
-				<p>{{ $article->body }}</p>
+				
+				<div>
+					{{ str_limit($article->body, 100, ' [ Read more... ]') }}
+				</div>
 
 
 				

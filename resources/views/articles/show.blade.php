@@ -3,6 +3,7 @@
 @section('content')
 
 <h2>{{ $article->title }} </h2>
+<h4>Created by {{ $article->user->name }}<small>&nbsp&nbsppublished on&nbsp&nbsp{{ $article->published_at }}</small></h4> 
 
 <p>{{ $article->body }}</p>
 
