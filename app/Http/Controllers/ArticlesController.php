@@ -35,8 +35,11 @@ class ArticlesController extends Controller {
 		return view('articles.create');
 	}
 
-	public function show($id) {
-		$article = Article::findOrFail($id);
+	public function show(Article $article) {
+
+		// $article = Article::findOrFail($id);
+
+
 		// dd($article->published_at);
 		// if(is_null($article)) {
 		// 	abort(404);
@@ -74,24 +77,33 @@ class ArticlesController extends Controller {
 		$article = new Article($request->all());
 		
 		Auth::user()->articles()->save($article);
+		// ARBA
+		// Auth::user()->articles()->create($request->all());
+		//
 
+		// \Session::flash('flash_message', 'Your article has been created!');
+		
+		\Flash::success('Your article has been created!');
+		
 		return redirect('articles');
 
 	}
 
 
-	public function edit($id) {
+	public function edit(Article $article) {
 
-		$article = Article::findOrFail($id);
+		// $article = Article::findOrFail($id);
 
 		return view('articles.edit', compact('article'));
 	}
 	
 	
-	public function update($id, ArticleRequest $request) {
+	public function update(Article $article, ArticleRequest $request) {
 
-		$article = Article::findOrFail($id);
+		// $article = Article::findOrFail($id);
 
+		\Flash::info('Your article has been updated!');
+		
 		$article->update($request->all());
 
 		return redirect('articles');

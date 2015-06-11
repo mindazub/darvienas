@@ -14,6 +14,10 @@ Route::controllers([
 	'password'=>'Auth\PasswordController',
 	]);
 
-Route::get('foo', ['middleware'=>'manager', function(){
-	return 'this is only for managers';
-}]);
+// Route::get('foo', ['middleware'=>'manager', function(){
+// 	return 'this is only for managers';
+// }]);
+
+Route::get('foo/{bar}', function(){
+	
+});

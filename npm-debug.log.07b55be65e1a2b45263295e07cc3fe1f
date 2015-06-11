@@ -1,0 +1,26 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'link' ]
+2 info using npm@2.7.4
+3 info using node@v0.12.2
+4 verbose node symlink /usr/bin/node
+5 verbose linkPkg /home/vagrant/Code/darvienas
+6 verbose stack Error: Package must have a name field to be linked
+6 verbose stack     at /usr/lib/node_modules/npm/lib/link.js:126:12
+6 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-package-json/read-json.js:52:40
+6 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-package-json/read-json.js:376:33
+6 verbose stack     at checkBinReferences_ (/usr/lib/node_modules/npm/node_modules/read-package-json/read-json.js:341:59)
+6 verbose stack     at final (/usr/lib/node_modules/npm/node_modules/read-package-json/read-json.js:373:17)
+6 verbose stack     at then (/usr/lib/node_modules/npm/node_modules/read-package-json/read-json.js:127:33)
+6 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-package-json/read-json.js:332:40
+6 verbose stack     at evalmachine.<anonymous>:334:14
+6 verbose stack     at /usr/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:102:5
+6 verbose stack     at FSReqWrap.oncomplete (evalmachine.<anonymous>:95:15)
+7 verbose cwd /home/vagrant/Code/darvienas
+8 error Linux 3.16.0-23-generic
+9 error argv "/usr/bin/node" "/usr/bin/npm" "link"
+10 error node v0.12.2
+11 error npm  v2.7.4
+12 error Package must have a name field to be linked
+13 error If you need help, you may report this error at:
+13 error     <https://github.com/npm/npm/issues>
+14 verbose exit [ 1, true ]
