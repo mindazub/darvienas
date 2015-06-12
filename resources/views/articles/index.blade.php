@@ -12,6 +12,13 @@
 			<a href="/articles/{{ $article->id }}">{{ $article->title}}</a>
 			</h2></strong>
 			<h4>Created by {{ $article->user->name }}<small>&nbsp&nbsppublished on&nbsp&nbsp{{ $article->published_at }}</small></h4> 
+@if(!$article->tags->isEmpty())			
+	<p><strong>Tags:</strong></p>
+	@foreach($article->tags as $tag)
+		|&nbsp{{ $tag->name }}&nbsp</li>
+	@endforeach
+	<br/>
+@endif
 
 				<p>Created:{{ $article->created_at }}</p>
 				<p>Published:{{ $article->published_at }}</p>

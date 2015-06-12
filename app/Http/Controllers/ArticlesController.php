@@ -3,6 +3,7 @@
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 use App\Article;
+use App\Tag;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -31,14 +32,16 @@ class ArticlesController extends Controller {
 	}
 
 	
-	public function create() {		
-		return view('articles.create');
+	public function create() {	
+
+		$tags = Tag::lists('name', 'id');
+
+		return view('articles.create', compact('tags'));
 	}
 
 	public function show(Article $article) {
 
 		// $article = Article::findOrFail($id);
-
 
 		// dd($article->published_at);
 		// if(is_null($article)) {
@@ -74,9 +77,16 @@ class ArticlesController extends Controller {
 
 		// Auth::user()->save(new Article($request->all()));
 
-		$article = new Article($request->all());
+		// dd($request->input('tags'));
+		// dd($request->input('tags'));
+
+		$article = Auth::user()->articles()->create($request->all());		
 		
-		Auth::user()->articles()->save($article);
+		$article->tags()->attach($request->input('tag_list'));
+
+		// $article = new Article($request->all());
+		// Auth::user()->articles()->save($article);
+
 		// ARBA
 		// Auth::user()->articles()->create($request->all());
 		//
@@ -93,8 +103,10 @@ class ArticlesController extends Controller {
 	public function edit(Article $article) {
 
 		// $article = Article::findOrFail($id);
+		$tags = Tag::lists('name', 'id');
 
-		return view('articles.edit', compact('article'));
+
+		return view('articles.edit', compact('article', 'tags'));
 	}
 	
 	

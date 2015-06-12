@@ -7,6 +7,16 @@
 
 <p>{{ $article->body }}</p>
 
+@unless($article->tags->isEmpty())
+<h5>Tags:</h5>
+	<ul>
+		@foreach($article->tags as $tag)
+			<li>{{ $tag->name }}</li>
+		@endforeach
+	</ul>
+@endunless
+<br/>
+
 <h4>Two approaches to show </h4>
 <br/>
 <a href="{{ route('articles.edit', [ $article->id	]) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp&nbspEdit&nbsp&nbsp|</a>

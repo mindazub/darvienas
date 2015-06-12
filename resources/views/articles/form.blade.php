@@ -18,6 +18,13 @@
 			    {!! Form::input('date', 'published_at', date('Y-m-d'), array('class'=>'form-control', 'size'=>'30x4')) !!}
 		</div>
 
+		<div class="form-group">
+			    {!! Form::label('tag_list', 'Tags:') !!}
+			    <br/>
+			    {!! Form::select('tag_list[]', $tags, null, ['class'=>'form-control', 'multiple']) !!}
+		</div>
+
+
 
 		<div class="form-group">		    
 		    {!! Form::submit($submitButtonText, array('class'=>'btn btn-info')) !!}
