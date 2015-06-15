@@ -19,7 +19,7 @@
 
 
 <a href="{{ route('articles.edit', [ $article->id	]) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp&nbspEdit&nbsp&nbsp|</a>
-<a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp&nbspDelete</a>
+<a href="{{ route('articles.destroy', [ $article->id ]) }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp&nbspDelete</a>
 
 <hr/>
 

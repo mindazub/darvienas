@@ -28,7 +28,9 @@ class ArticlesController extends Controller {
 		$articles = Article::latest('published_at')->published()->paginate(5);
 		// $articles = Article::latest('published_at')->unpublished()->paginate(5);
 		// order_by('published_at', 'desc')
-		return view('articles.index', compact('articles'));
+		$latest = Article::latest()->first();
+
+		return view('articles.index', compact('articles', 'latest'));
 	}
 
 	
@@ -47,7 +49,10 @@ class ArticlesController extends Controller {
 		// if(is_null($article)) {
 		// 	abort(404);
 		// }
-		return view('articles.show', compact('article'));
+
+				$latest = Article::latest()->first();
+
+		return view('articles.show', compact('article', 'latest'));
 	}
 
 	public function store(ArticleRequest $request) {
@@ -113,14 +118,16 @@ class ArticlesController extends Controller {
 	
 	public function destroy(Article $article, $id) {
 		
-		
-		$article->delete($id);
+		// dd($request);
+
+		$article->delete();
 
 		\Flash::alert('You deleted the selected article!');
 
 		return redirect('articles');
 
 	}
+
 	
 	
 	public function syncTags(Article $article, array $tags) {

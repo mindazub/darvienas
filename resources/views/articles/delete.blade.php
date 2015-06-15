@@ -9,7 +9,7 @@
 			Edit the Article: {!! $article->title !!}
 		</h1>
 
-		{!! Form::model($article ,['method'=>'PATCH', 'route'=>['articles.update', $article->id]]) !!}
+		{!! Form::model($article ,['method'=>'DELETE', 'route'=>['articles.destroy', $article->id]]) !!}
 
 			@include('articles.form', ['submitButtonText'=>'Update Article'])
 
