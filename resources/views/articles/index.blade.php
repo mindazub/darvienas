@@ -12,7 +12,14 @@
 			<a href="/articles/{{ $article->id }}">{{ $article->title}}</a>
 			</h2></strong>
 			<h4>Created by {{ $article->user->name }}<small>&nbsp&nbsppublished on&nbsp&nbsp{{ $article->published_at }}</small></h4> 
-@if(!$article->tags->isEmpty())			
+<!-- <p ><a style="color: red;" href="{{ route('articles.destroy', $article->id) }}">
+<i class="glyphicon glyphicon-remove-circle"></i>
+Delete
+</a>
+</p>
+<a href="{{ route('articles.destroy', $article->id) }}" ><button class="btn btn-sm btn-danger">Delete</button></a>
+ -->
+@if(!$article->tags->isEmpty())
 	<p><strong>Tags:</strong></p>
 	@foreach($article->tags as $tag)
 		|&nbsp{{ $tag->name }}&nbsp</li>
