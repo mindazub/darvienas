@@ -116,15 +116,20 @@ class ArticlesController extends Controller {
 	
 	
 	
-	public function destroy(Article $article, $id) {
+	public function destroy(Article $article) {
 		
-		// dd($request);
+//		 dd($article);
 
-		$article->delete();
+//		$article->delete();
+
+
+        $article->delete();
+
+//        dd($article);
 
 		\Flash::alert('You deleted the selected article!');
 
-		return redirect('articles');
+		return redirect('admin');
 
 	}
 

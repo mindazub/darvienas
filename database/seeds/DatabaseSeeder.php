@@ -2,8 +2,10 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-
+use App\databse\seeds\ArticlesTableSeeder;
+use App\databse\seeds\TagsTableSeeder;
 class DatabaseSeeder extends Seeder {
+
 
 	/**
 	 * Run the database seeds.
@@ -14,7 +16,10 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		// $this->call('UserTableSeeder');
+//        $this->call('UsersTableSeeder');
+        $this->call('ArticlesTableSeeder');
+        $this->call('TagsTableSeeder');
+        $this->call('ArticlesTagsTableSeeder');
 	}
 
 }

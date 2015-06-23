@@ -12,10 +12,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		view()->composer('partials.nav', function($view){
-			
-			$view->with('latest', Article::latest()->first());
-			});
+		
 	}
 
 	/**
@@ -32,6 +29,7 @@ class AppServiceProvider extends ServiceProvider {
 		$this->app->bind(
 			'Illuminate\Contracts\Auth\Registrar',
 			'App\Services\Registrar'
+
 		);
 	}
 
