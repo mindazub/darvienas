@@ -17,8 +17,9 @@ class DatabaseSeeder extends Seeder {
 		Model::unguard();
 
 //        $this->call('UsersTableSeeder');
-        $this->call('ArticlesTableSeeder');
-        $this->call('TagsTableSeeder');
+		// butinai tagus pirma reikia seedint!!!! Nes kitaip foregin key constraint
+		$this->call('TagsTableSeeder');
+        $this->call('ArticlesTableSeeder');        
         $this->call('ArticlesTagsTableSeeder');
 	}
 
